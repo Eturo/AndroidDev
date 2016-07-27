@@ -139,6 +139,7 @@ public class ForecastFragment extends Fragment {
                 low = (low * 1.8) + 32;
             }else if(!unitType.equals(getString(R.string.pref_unit_value_celcius))){
                 Log.d("ForecastFragment", "Unit type not found: " + unitType);
+
             }
 
 
@@ -171,8 +172,9 @@ public class ForecastFragment extends Fragment {
             JSONArray weatherArray = forecastJson.getJSONArray(OWM_LIST);
 
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            String unitType = sp.getString(getString(R.string.pref_unit_key),getString(R.string.pref_unit_value_celcius));
 
+            String unitType = sp.getString(getString(R.string.pref_unit_key),getString(R.string.pref_unit_value_celcius));
+            Log.d("ForecastFragment",unitType);
             // OWM returns daily forecasts based upon the local time of the city that is being
             // asked for, which means that we need to know the GMT offset to translate this data
             // properly.
